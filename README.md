@@ -1,92 +1,50 @@
-<!-- Please update value in the {}  -->
+# Samir Shrestha — Portfolio
 
-<h1 align="center">{Your project name}</h1>
+Single-page personal portfolio for Samir Shrestha, Support Engineer. Built with React, Tailwind CSS and Framer Motion.
 
-<div align="center">
-   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
-</div>
-
-<div align="center">
-  <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo
-    </a>
-    <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/5ZnOYsSXM24JWnCsNFlt">
-      Challenge
-    </a>
-  </h3>
-</div>
-
-<!-- TABLE OF CONTENTS -->
-
-## Table of Contents
-
-- [Overview](#overview)
-  - [Built With](#built-with)
-- [Features](#features)
-- [How to use](#how-to-use)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
-
-<!-- OVERVIEW -->
-
-## Overview
-
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
-
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
-
-### Built With
-
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
-
-- [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
-
-## Features
-
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/5ZnOYsSXM24JWnCsNFlt) was to build an application to complete the given user stories.
-
-## How To Use
-
-<!-- Example: -->
-
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+## Running it
 
 ```bash
-# Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
-
-# Install dependencies
-$ npm install
-
-# Run the app
-$ npm start
+npm install
+npm run dev      # development server
+npm run build    # production build into dist/
+npm run preview  # serve the production build
 ```
 
-## Acknowledgements
+## Structure
 
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
+| Path | What it holds |
+| --- | --- |
+| `src/data/profile.js` | All content — profile facts, skills, services, experience, projects, testimonials. Edit copy here, not in the components. |
+| `src/components/` | One component per section, plus shared primitives. |
+| `index.html` | Meta title, meta description, Open Graph / Twitter tags and Person structured data. |
 
-- [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
+### Components
 
-## Contact
+- `Navbar` — sticky transparent navbar that gains a blurred background on scroll, with a mobile hamburger menu
+- `ScrollProgress` — gradient scroll progress indicator
+- `CursorGlow` — pointer glow, desktop only (skipped on touch, small screens and reduced motion)
+- `Hero`, `About`, `Skills`, `Services`, `Experience`, `Projects`, `Testimonials`, `Contact`, `Footer`
+- `Reveal`, `SectionHeading`, `Counter`, `Icon` — shared primitives
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
+## Placeholders to replace
+
+1. **Profile photo** — the placeholder block in `src/components/Hero.jsx`. Drop an image into `public/` and swap the block for an `<img>`.
+2. **Projects** — all three cards in `projects` (`src/data/profile.js`) are placeholders.
+3. **Testimonials** — all three cards in `testimonials` are placeholders; replace them only with real feedback you have permission to publish.
+4. **Open Graph image** — `public/og-image.png` (1200×630) is generated artwork, rendered from `public/og-image.svg`. Replace both if you want a photo-based preview card.
+
+## Contact form
+
+Validation is front-end only (required fields, email format, minimum message length). No message is sent anywhere — wire it to a form service or backend endpoint in `src/components/Contact.jsx` when you have one.
+
+## Accessibility and motion
+
+Every animation is disabled under `prefers-reduced-motion`: scroll reveals render in place, counters show their final value, the testimonial slider stops auto-advancing, and the cursor glow does not mount.
+
+## Deployment
+
+The site deploys to GitHub Pages via `.github/workflows/deploy.yml` on every push to `main`: it runs `npm ci`, `npm run build`, and publishes `dist/`.
+
+- The custom domain lives in `public/CNAME` (`shresthasamir.name.np`), which Vite copies into `dist/` on each build. **Do not delete it** — without it GitHub Pages drops the custom domain.
+- The repository's Pages source must be **GitHub Actions** (Settings → Pages → Build and deployment → Source). The workflow tries to set this automatically via `actions/configure-pages` with `enablement: true`.
