@@ -134,7 +134,7 @@ export default function Hero() {
                 </div>
                 <p className="text-sm font-medium text-slate-300">Profile photo placeholder</p>
                 <p className="px-8 text-center text-xs text-slate-500">
-                  Replace this block with your photo in src/components/Hero.jsx
+                  Replace this block with your photo in app/src/components/Hero.jsx
                 </p>
               </motion.div>
             </div>
