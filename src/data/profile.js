@@ -3,7 +3,6 @@ export const profile = {
   title: 'Support Engineer',
   location: 'Madhyapur Thimi, Nepal',
   email: 'sht.samir13@gmail.com',
-  phone: '+977 9861286947',
   linkedin: 'https://www.linkedin.com/in/samir-stha/',
   heroIntro:
     'I am an IT support engineer with 2+ years of experience resolving incidents and user requests across chat, email and phone. I troubleshoot, debug and escalate with clear evidence, and I write knowledge base articles that help users solve problems on their own.',

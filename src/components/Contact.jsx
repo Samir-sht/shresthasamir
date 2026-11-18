@@ -35,12 +35,6 @@ function validate(values) {
 
 const contactDetails = [
   { icon: 'mail', label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
-  {
-    icon: 'phone',
-    label: 'Phone',
-    value: profile.phone,
-    href: `tel:${profile.phone.replace(/\s/g, '')}`,
-  },
   { icon: 'pin', label: 'Location', value: profile.location },
 ];
 
@@ -84,7 +78,7 @@ export default function Contact() {
         <SectionHeading
           eyebrow="Contact"
           title="Let's talk about your support desk"
-          description="Send a message and I will get back to you. For anything urgent, email or call me directly."
+          description="Send a message and I will get back to you. For anything urgent, email me directly."
         />
 
         {/* Animated call-to-action banner */}
